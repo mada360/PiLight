@@ -5,13 +5,9 @@ if (( $EUID !=0 )); then
 	exit
 fi
 
-if [ ! -d "$DIRECTORY" ]; then
-  echo "Folder doesn't exist"
-	exit
-fi
 
 # Get Steam Ip address
-echo "Please enter your Steam PC IP address: "
+echo "Please enter your Steam PC IP address (e.g. 192.168.1.101) : "
 read -p 'IP Address: ' steampc
 
 # Add moonlight repo
@@ -48,8 +44,11 @@ mkdir ~/RetroPie/roms/moonlight
 
 cd ~/RetroPie/roms/moonlight
 
+
+# Creates a profile for the 4 most common streaming settings and allows for streaming more intensive games at lower res/fps for stable connection.
+
 echo "#!/bin/bash
-moonlight stream $steampc -720 -30fps -mapping /opt/retropie/configs/moonlight/controllername.map" > 720p30fps.sh
+moonlight stream $steampc -1080 -60fps -mapping /opt/retropie/configs/moonlight/controllername.map" > 1080p60fps.sh
 
 echo "#!/bin/bash
 moonlight stream $steampc -1080 -30fps -mapping /opt/retropie/configs/moonlight/controllername.map" > 1080p30fps.sh
@@ -58,7 +57,8 @@ echo "#!/bin/bash
 moonlight stream $steampc -720 -60fps -mapping /opt/retropie/configs/moonlight/controllername.map" > 720p60fps.sh
 
 echo "#!/bin/bash
-moonlight stream $steampc -1080 -60fps -mapping /opt/retropie/configs/moonlight/controllername.map" > 1080p60fps.sh
+moonlight stream $steampc -720 -30fps -mapping /opt/retropie/configs/moonlight/controllername.map" > 720p30fps.sh
+
 
 sudo chmod +x *
 
@@ -68,9 +68,30 @@ mkdir moonlight
 cd moonlight
 moonlight map controllername.map
 
-# THEME STUFF
-wget -N -P ./download http://jordanhotmann.com/wp-content/uploads/2015/09/steam.zip
+# THEME STUFF (Optional)
 
-unzip ./download/steam.zip
+read -p "Would you like to install the simple theme? Press Y for yes" -n 1 -r
 
-sudo mv steam /etc/emulationstation/themes/simple
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	
+	wget -N -P ./download http://www.emulationstation.org/downloads/themes/simple_latest.zip
+
+	unzip -q ./download/simple_latest.zip
+
+	# Move folder to 
+	sudo mv simple /etc/emulationstation/themes	
+
+	if [ ! -d /etc/emulationstation/themes/simple ]; then
+	  printf "\n \n Please make sure you have installed the simple theme through the retropie-setup menu instruction found here - https://github.com/RetroPie/RetroPie-Setup/wiki/Themes \n \n"
+		exit
+	fi
+
+	# Download steam theme
+	wget -N -P ./download http://jordanhotmann.com/wp-content/uploads/2015/09/steam.zip
+
+	unzip ./download/steam.zip
+
+	# Move folder to 
+	sudo mv steam /etc/emulationstation/themes/simple
+fi
