@@ -5,46 +5,44 @@ if (( $EUID !=0 )); then
 	exit
 fi
 
-clear
 
-cat logo
-
-PS3='Please enter your choice: '
-options=("Install All" "Install Moonlight" "Configure Moonlight" "Quit")
-select opt in "${options[@]}"
+while :
 do
-	case $opt in
-		"Install All")
-		echo "You have chosen to install and configure everything"
 
-		# Get Steam Ip address
-		echo "Please enter your Steam PC IP address (e.g. 192.168.1.101) : "
-		read -p 'IP Address: ' steampc
-		export $steampc
-		./moonlightInstall.sh
-		./hyperionInstall.sh
-		./moonlightConfig.sh
-		./hyperionConfig.sh
-		;;
-		"Install And Configure Moonlight")
-		echo "you chose choice 2"
-		# Get Steam Ip address
-		echo "Please enter your Steam PC IP address (e.g. 192.168.1.101) : "
-		read -p 'IP Address: ' steampc
-		export $steampc
-		./moonlightInstall.sh
-		;;
-		"Configure Moonlight")
-		echo "you chose choice 2"
-		# Get Steam Ip address
-		echo "Please enter your Steam PC IP address (e.g. 192.168.1.101) : "
-		read -p 'IP Address: ' steampc
-		export $steampc		
-		./moonlightConfig.sh
-		;;
-		"Quit")
-		break
-		;;
-		*) echo invalid option;;
-	esac
+  clear
+
+  echo
+  cat header
+  echo
+  echo "MENU"
+  echo
+  echo "  1 - Install All"
+  echo "  2 - Install Moonlight"
+  echo "  3 - Configure Moonlight"
+  echo "  4 - Install Hyperion"
+
+  echo "  x - Exit"
+  echo
+  echo
+  echo -n "Enter option: "
+  read opt
+
+
+  if [ "$?" != "1" ]
+  then
+    case $opt in
+      1) echo "Install All"; 	scripts/getip.sh; scripts/moonlightInstall.sh ;	.scripts/hyperionInstall.sh;	scripts/moonlightConfig.sh;	scripts/hyperionConfig.sh;;
+      2) echo "Install Moonlight"; scripts/moonlightInstall.sh ;;
+      3) echo "Configure Moonlight"; scripts/moonlightConfig.sh ;;
+      4) echo "Install Hyperion"; scripts/hyperionInstall;;
+
+      x) clear; echo; echo "Goodbye."; echo; exit 1;;
+      *) echo "Invalid option"; continue;;
+    esac
+  fi
+
+  echo
+  echo "Press Enter to continue"
+  read enterKey
+
 done
