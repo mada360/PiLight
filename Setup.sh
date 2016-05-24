@@ -5,6 +5,10 @@ if (( $EUID !=0 )); then
 	exit
 fi
 
+if [ ! -d "scipts" ]; then
+  echo "Make sure Setup.sh is in the same directory as the scripts folder!"
+	exit
+fi
 
 while :
 do
