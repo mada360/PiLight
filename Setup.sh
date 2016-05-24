@@ -20,6 +20,7 @@ do
   echo "  2 - Install Moonlight"
   echo "  3 - Configure Moonlight"
   echo "  4 - Install Hyperion"
+  echo "  5 - Configure Hyperion"
 
   echo "  x - Exit"
   echo
@@ -31,10 +32,11 @@ do
   if [ "$?" != "1" ]
   then
     case $opt in
-      1) echo "Install All"; 	scripts/getip.sh; scripts/moonlightInstall.sh ;	.scripts/hyperionInstall.sh;	scripts/moonlightConfig.sh;	scripts/hyperionConfig.sh;;
+      1) echo "Install All"; scripts/getip.sh; scripts/moonlightInstall.sh ;  scripts/hyperionInstall.sh;	scripts/moonlightConfig.sh;	scripts/hyperionConfig.sh;;
       2) echo "Install Moonlight"; scripts/moonlightInstall.sh ;;
       3) echo "Configure Moonlight"; scripts/moonlightConfig.sh ;;
-      4) echo "Install Hyperion"; scripts/hyperionInstall;;
+      4) echo "Install Hyperion (NOT READY)"; scripts/hyperionInstall.sh;;
+      5) echo "Configure Hyperion (NOT READY)"; scripts/hyperionConfig.sh;;
 
       x) clear; echo; echo "Goodbye."; echo; exit 1;;
       *) echo "Invalid option"; continue;;
