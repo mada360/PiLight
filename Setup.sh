@@ -25,6 +25,7 @@ do
   echo "  3 - Configure Moonlight"
   echo "  4 - Install Hyperion"
   echo "  5 - Configure Hyperion"
+	echo "  6 - Disable Overscan"
 
   echo "  x - Exit"
   echo
@@ -41,6 +42,7 @@ do
       3) echo "Configure Moonlight"; scripts/moonlightConfig.sh ;;
       4) echo "Install Hyperion (NOT READY)"; scripts/hyperionInstall.sh;;
       5) echo "Configure Hyperion (NOT READY)"; scripts/hyperionConfig.sh;;
+			6) echo "Disable Overscan"; scripts/removeOverscan.sh;;
 
       x) clear; echo; echo "Goodbye."; echo; exit 1;;
       *) echo "Invalid option"; continue;;
