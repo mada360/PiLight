@@ -10,16 +10,19 @@ fi
 grep -q -F 'deb http://archive.itimmer.nl/raspbian/moonlight jessie main' /etc/apt/sources.list || echo 'deb http://archive.itimmer.nl/raspbian/moonlight jessie main' >> /etc/apt/sources.list
 
 # Install moonlight
-apt-get update
-apt-get install moonlight-embedded
+apt-get $1 update
+apt-get $1 install moonlight-embedded
 mkdir ~/Moonlight
 cd ~/Moonlight
 
+#CHECK IF STEAM ALREADY THERE
+if grep $1 steam /etc/emulationstation/es_systems.cfg; then
+	echo "Steam already added as a system."
+else
 #Create backup and then add a shortcut to your pc in Emulation Station.
 cp /etc/emulationstation/es_systems.cfg es_systems.cfg.bak
 
 # Add moonlight system and backup old config
-
 mv /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.bak
 
 sed '$d' /etc/emulationstation/es_systems.cfg.bak > /etc/emulationstation/es_systems.cfg
@@ -35,7 +38,7 @@ echo "	<system>
 	</system>
 <\systemList>"  >> /etc/emulationstation/es_systems.cfg
 
-
+fi
 # Create "ROM" folder
 mkdir ~/RetroPie/roms/moonlight
 
@@ -70,7 +73,7 @@ then
 
 	wget -N -P ./download http://www.emulationstation.org/downloads/themes/simple_latest.zip
 
-	unzip -q ./download/simple_latest.zip
+	unzip $1 ./download/simple_latest.zip
 
 	# Move folder to
 	mv simple /etc/emulationstation/themes
