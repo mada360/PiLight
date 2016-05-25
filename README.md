@@ -25,7 +25,7 @@ The script will add the moonlight repo to RetroPie, install moonlight embedded, 
 
 ## How to Use
 
-Either clone or download the zip from [here](https://github.com/mada360/PiLight/archive/master.zip)
+Either clone or download the zip from [here.](https://github.com/mada360/PiLight/archive/master.zip)
 
 To use the Moonligh script please make sure you have an internet connection and can connect to the Pi through SSH. This will probably be easiest to use with a file manager like filezilla. Simply copy the Moonlight.sh file onto the Pi the home directory is preferable - `/home/pi/ `.
 
@@ -38,9 +38,9 @@ It's a good idea to assign static IP addresses as this will make your life a lot
 
 ## Future Improvements
 
-[ ] I'd like to be able to include the Kodi install ~~and to automate the simple theme installation~~ (This is now built in) however they still can only be installed via the Emulation station menu at this time.
-[ ] Add hyperion for all that ambilight goodness (optional install)
+- [ ] I'd like to be able to include the Kodi install ~~and to automate the simple theme installation~~ (This is now built in) however they still can only be installed via the Emulation station menu at this time.
 
+- [ ] Add hyperion for all that ambilight goodness (optional install)
 
 ## Sources and Thanks!
 [AwesomePi part 1](http://awesomepi.com/diy-breath-taking-ambilight-for-your-own-tv-raspberry-pi-2-tutorial-part-1/) and [AwesomePi part 2](http://awesomepi.com/part-2-let-there-be-light-installing-ambilight-software-hyperion-in-openelec/).
