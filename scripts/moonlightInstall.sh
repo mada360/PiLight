@@ -13,7 +13,7 @@ grep -q -F 'deb http://archive.itimmer.nl/raspbian/moonlight jessie main' /etc/a
 apt-get $1 update
 apt-get $1 install moonlight-embedded
 mkdir ~/Moonlight
-cd ~/Moonlight
+
 
 #CHECK IF STEAM ALREADY THERE
 if grep $1 steam /etc/emulationstation/es_systems.cfg; then
@@ -27,16 +27,9 @@ mv /etc/emulationstation/es_systems.cfg /etc/emulationstation/es_systems.cfg.bak
 
 sed '$d' /etc/emulationstation/es_systems.cfg.bak > /etc/emulationstation/es_systems.cfg
 
-echo "	<system>
-	  <fullname>Steam</fullname>
-	  <name>Steam</name>
-	  <path>~/RetroPie/roms/moonlight</path>
-	  <extension>.sh .SH</extension>
-	  <command>%ROM%</command>
-	  <platform>steam</platform>
-	  <theme>steam</theme>
-	</system>
-<\systemList>"  >> /etc/emulationstation/es_systems.cfg
+ls
+
+cat ./scripts/steam  >> /etc/emulationstation/es_systems.cfg
 
 fi
 # Create "ROM" folder
