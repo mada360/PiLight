@@ -35,11 +35,11 @@ fi
 
 
 # Create "ROM" folder
-mkdir pi/RetroPie/roms/moonlight
+mkdir /home/pi/RetroPie/roms/moonlight
 
 # Now we’re going to create a script or multiple scripts for starting moonlight. I have 3 different scripts that connect to the same computer with either 1080p/30fps, 720p/60fps, or 720p/30fps so I can stream in different qualities depending on how well a certain game streams.
 
-cd pi/RetroPie/roms/moonlight
+cd /home/pi/RetroPie/roms/moonlight
 
 
 # Creates a profile for the 4 most common streaming settings and allows for streaming more intensive games at lower res/fps for stable connection.
