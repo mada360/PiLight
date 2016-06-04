@@ -11,7 +11,7 @@ grep -q -F 'deb http://archive.itimmer.nl/raspbian/moonlight jessie main' /etc/a
 
 # Install moonlight
 apt-get $1 update
-apt-get $1 install moonlight-embedded
+apt-get install moonlight-embedded
 mkdir ~/Moonlight
 
 
@@ -32,6 +32,8 @@ ls
 cat ./scripts/steam  >> /etc/emulationstation/es_systems.cfg
 
 fi
+
+
 # Create "ROM" folder
 mkdir ~/RetroPie/roms/moonlight
 
@@ -54,6 +56,8 @@ moonlight stream $steampc -720 -60fps -mapping /opt/retropie/configs/moonlight/c
 echo "#!/bin/bash
 moonlight stream $steampc -720 -30fps -mapping /opt/retropie/configs/moonlight/controllername.map" > 720p30fps.sh
 
+echo "#!/bin/bash
+moonlight pair $steampc" > pairWithPC.sh
 
 chmod +x *
 
