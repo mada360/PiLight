@@ -10,6 +10,8 @@ if [ ! -d "./scripts" ]; then
 	exit
 fi
 
+chmod +x ./scripts/*
+
 while :
 do
 
