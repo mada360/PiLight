@@ -1,0 +1,10 @@
+  <system>
+    <fullname>Kodi</fullname>
+    <name>kodi</name>
+    <path>~/RetroPie/roms/kodi</path>
+    <extension>.sh .SH</extension>
+    <command>%ROM%</command>
+    <platform>kodi</platform>
+    <theme>kodi</theme>
+  </system>
+</systemList>
